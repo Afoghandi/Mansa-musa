@@ -1,5 +1,6 @@
 import React from 'react';
 import { Fragment } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/styles';
 import Header from './component/Header/Header';
 
@@ -12,17 +13,24 @@ class App extends React.Component {
 		return (
 			<Fragment>
 				<ThemeProvider theme={theme}>
-					<Header />
-
-					{[...new Array(200)]
-						.map(
-							() => `Cras mattis consectetur purus sit amet fermentum.
-Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
-						)
-						.join('\n')}
-				</ThemeProvider>
+					<BrowserRouter>
+						<Header />
+						<Switch>
+							<Route exact path='/' component={() => <div>Home</div>} />
+							<Route exact path='/shop' component={() => <div>shop</div>} />
+							<Route
+								exact
+								path='/signin'
+								component={() => <div>Sign In</div>}
+							/>
+							<Route
+								exact
+								path='/contact'
+								component={() => <div>Contact</div>}
+							/>
+						</Switch>
+					</BrowserRouter>
+				</ThemeProvider>{' '}
 			</Fragment>
 		);
 	}
