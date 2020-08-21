@@ -2,7 +2,8 @@ import React, { Fragment } from 'react';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+
+import { logo } from '../../img/Icon/logo.jpg';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import { makeStyles } from '@material-ui/styles';
 
@@ -31,7 +32,7 @@ const Header = () => {
 			<ElevationScroll>
 				<AppBar position='fixed'>
 					<Toolbar>
-						<Typography variant='h3'>Mansa Musa</Typography>
+						<img src={logo} alt='logo' />
 					</Toolbar>
 				</AppBar>
 			</ElevationScroll>
