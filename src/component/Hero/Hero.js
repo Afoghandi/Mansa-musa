@@ -1,40 +1,70 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import mainBcg from '../../img/images/laptop/LP4.jpg';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 
 import Grid from '@material-ui/core/Grid';
 
-export default function Hero({ img, title, subtitle, max, children }) {
+export default function Hero({
+	title,
+	subtitle,
+	children,
+	img,
+	miniBanner,
+	...otherProps
+}) {
 	const classes = useStyles();
 
 	return (
-		<Grid container direction='column' className={classes.heroWrapper}>
-			<Grid item className={classes.banner} direction='column'>
-				{' '}
-				<Grid item direction='row'>
+		<Fragment className={classes.heroWrapper}>
+			<Grid container direction='column'>
+				<Grid
+					item
+					className={`${miniBanner ? `${classes.miniBanner}` : ''} ${
+						classes.banner
+					}`}
+					{...otherProps}
+					{...otherProps}
+					direction='column'
+					style={{
+						backgroundImage: `url(${img})`,
+					}}
+				>
 					{' '}
-					<Typography className={classes.title} variant='h1'>
-						{title}
-					</Typography>{' '}
-					<Grid item className={classes.subtitle}>
-						<Typography variant='h4'> {subtitle}</Typography>
+					<Grid item direction='row'>
+						{' '}
+						<Typography className={classes.title} variant='h1'>
+							{title}
+						</Typography>{' '}
+						<Grid item className={classes.subtitle}>
+							<Typography variant='h4'> {subtitle}</Typography>
+						</Grid>
 					</Grid>
-				</Grid>
-				<Grid justify='flex-start' item>
-					{children}
+					<Grid justify='flex-start' item>
+						{children}
+					</Grid>
+					<IconButton
+						aria-label='delete'
+						className={classes.margin}
+						size='large'
+					>
+						<ArrowDownwardIcon fontSize='large' />
+					</IconButton>
 				</Grid>
 			</Grid>
-		</Grid>
+		</Fragment>
 	);
 }
 
 const useStyles = makeStyles((theme) => ({
 	heroWrapper: {
 		flexGrow: 1,
-		minHeight: '100vh',
-		marginBottom: '1rem',
+
+		marginBottom: '2rem',
+		width: '100%',
 	},
 	banner: {
 		textAlign: 'center',
@@ -42,10 +72,14 @@ const useStyles = makeStyles((theme) => ({
 		alignItems: 'center',
 		justifyContent: 'center',
 		minHeight: '100vh',
-		backgroundImage: `url(${mainBcg})`,
-		backgroundRepeat: 'no-repeat',
+		backgroundColor: theme.palette.secondary.main,
+		opacity: 0.8,
 		backgroundSize: 'cover',
 	},
+	miniBanner: {
+		minHeight: '60vh',
+	},
+
 	title: {
 		...theme.typography.title,
 		fontSize: 56,
@@ -59,4 +93,12 @@ const useStyles = makeStyles((theme) => ({
 		marginBottom: '30px',
 		color: theme.palette.primary.main,
 	},
+	margin: {
+		marginTop: '1rem',
+		color: 'red',
+	},
 }));
+
+Hero.defaultProps = {
+	img: mainBcg,
+};

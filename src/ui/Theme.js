@@ -2,6 +2,10 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 const main = '#1976D2';
 const secondary = '#ff7043';
+const blueBody = '#2196F3';
+const mainGray = '#757575';
+const lightBlue = '#BBDEFB';
+const black = '#212121';
 
 export default createMuiTheme({
     palette: {
@@ -10,6 +14,18 @@ export default createMuiTheme({
         },
         secondary: {
             main: `${secondary}`,
+        },
+        blueBody: {
+            body: `${blueBody}`,
+        },
+        mainGray: {
+            mainGray: `${mainGray}`,
+        },
+        lightBlue: {
+            lightBlue: `${lightBlue}`,
+        },
+        black: {
+            black: `${black}`,
         },
     },
     typography: {
@@ -25,15 +41,48 @@ export default createMuiTheme({
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: 'white',
+            color: `${secondary}`,
             textTransform: 'capitalize',
+        },
+
+        h2: {
+            fontFamily: 'Montserrat',
+            fontWeight: 'bold',
+            letterSpacing: '0.3rem',
+            textAlign: 'center',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: `${mainGray}`,
+            textTransform: 'capitalize',
+            paddingTop: '1rem',
+            paddingBottom: '2rem',
+            fontSize: '2rem',
         },
         h4: {
             fontFamily: 'Lato',
+            letterSpacing: '0.3rem',
+            textAlign: 'center',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginBottom: '1rem',
+        },
+        h6: {
+            fontFamily: 'Lato',
+            letterSpacing: '0.3rem',
+            textAlign: 'center',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginBottom: '1rem',
+            color: `${mainGray}`,
+            textTransform: 'capitalize',
         },
         p: {
             fontFamily: 'Open Sans',
-            color: '#212121',
+
+            fontSize: '1.1rem',
         },
         button: {
             minWidth: '165px',

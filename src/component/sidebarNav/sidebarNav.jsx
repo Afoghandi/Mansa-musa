@@ -46,6 +46,7 @@ const Sidebar = () => {
 				</List>
 			</SwipeableDrawer>{' '}
 			<IconButton
+				justify='center'
 				onClick={() => setOpenDrawer(!openDrawer)}
 				disableRipple
 				style={{ color: 'white' }}
