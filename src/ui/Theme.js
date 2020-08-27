@@ -81,7 +81,7 @@ export default createMuiTheme({
         },
         p: {
             fontFamily: 'Open Sans',
-
+            letterSpacing: '0.8px',
             fontSize: '1.1rem',
         },
         button: {

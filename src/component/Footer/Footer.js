@@ -2,54 +2,105 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import logo from '../../img/icon/mm.jpg';
 import { Grid } from '@material-ui/core';
+import Hidden from '@material-ui/core/Hidden';
+import facebook from '../../img/icon/facebook.svg';
+import instagram from '../../img/icon/instagram.svg';
+import whatsapp from '../../img/icon/whatsapp.svg';
 
 export default function Footer() {
+	const Links = [
+		[
+			{ name: 'facebook' },
+			{
+				icon: `${facebook}`,
+			},
+		],
+		[
+			{ name: 'Instagram' },
+			{
+				icon: `${instagram}`,
+			},
+		],
+		[{ name: 'Contact' }],
+		[{ name: 'About us' }],
+	];
 	const classes = useStyles();
 	return (
 		<footer className={classes.footer}>
-			<Grid container className={classes.mainContainer}>
-				<Grid item>
-					<Grid container direction='column'>
-						<Grid item className={classes.link}>
-							Home
+			<Hidden mdDown>
+				<Grid container justify='center' className={classes.mainContainer}>
+					{Links.map((linkGroup) => (
+						<Grid item className={classes.gridItem}>
+							<Grid container direction='column' spacing={2}>
+								{linkGroup.map((link) => (
+									<Grid item className={classes.link}>
+										{link.name}
+									</Grid>
+								))}
+							</Grid>
 						</Grid>
-					</Grid>
+					))}
 				</Grid>
-			</Grid>
-			<Grid item>
-				<Grid conatiner>
-					<Grid item className={classes.link}>
-						Services
-					</Grid>
-					<Grid item className={classes.link}>
-						Custom
-					</Grid>
-					<Grid item className={classes.link}>
-						mobile
-					</Grid>
-					<Grid item className={classes.link}>
-						website
-					</Grid>
-				</Grid>
-			</Grid>
+			</Hidden>
 			<img
 				src={logo}
 				alt='black decorative slash'
 				className={classes.bottomLogo}
 			/>{' '}
+			<Grid
+				container
+				justify='flex-end'
+				spacing={2}
+				className={classes.socialContainer}
+			>
+				<Grid item>
+					<img
+						src={facebook}
+						component={'a'}
+						href='www.facebook.com'
+						alt='facebook logo'
+						className={classes.icon}
+						rel='noopener noreferre'
+						target='_blank'
+					/>
+				</Grid>
+				<Grid item>
+					<img
+						src={whatsapp}
+						component={'a'}
+						href='www.facebook.com'
+						alt='whatsapp logo'
+						className={classes.icon}
+						rel='noopener noreferre'
+						target='_blank'
+					/>
+				</Grid>
+				<Grid item>
+					<img
+						src={instagram}
+						component={'a'}
+						href='www.facebook.com'
+						alt='instagram logo'
+						className={classes.icon}
+						rel='noopener noreferre'
+						target='_blank'
+					/>
+				</Grid>
+			</Grid>
 		</footer>
 	);
 }
 const useStyles = makeStyles((theme) => ({
 	footer: {
-		backgroundColor: theme.palette.primary.main,
-		//zIndex: 1302,
+		backgroundColor: theme.palette.lightBlue.lightBlue,
+		zIndex: 1302,
 		position: 'relative',
 		width: '100%',
 	},
 	bottomLogo: {
-		width: '25em',
+		width: '15em',
 		verticalAlign: 'bottom',
+		minHeight: '80px',
 		[theme.breakpoints.down('xs')]: {
 			width: '21em',
 		},
@@ -61,9 +112,29 @@ const useStyles = makeStyles((theme) => ({
 		position: 'absolute',
 	},
 	link: {
-		color: 'white',
-		fontFamily: 'Ariel',
-		fontSize: '0.75',
+		color: '#212121',
+		fontFamily: 'Lato',
+		fontSize: '1rem',
+		textTransform: 'capitalize',
 		fontWeight: 'bold',
+	},
+	gridItem: {
+		margin: '2em',
+	},
+	icon: {
+		height: '2em',
+		width: '5em',
+		marginTop: '12px',
+		[theme.breakpoints.down('xs')]: {
+			width: '3em',
+		},
+	},
+	socialContainer: {
+		position: 'absolute',
+		right: '1.5em',
+		marginTop: '-4.3em',
+		[theme.breakpoints.down('xs')]: {
+			marginTop: '-4.3em',
+		},
 	},
 }));

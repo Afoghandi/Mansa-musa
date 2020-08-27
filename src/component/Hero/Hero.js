@@ -9,28 +9,28 @@ import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import Grid from '@material-ui/core/Grid';
 
 export default function Hero({
-	title,
-	subtitle,
-	children,
-	img,
-	miniBanner,
-	...otherProps
+    title,
+    subtitle,
+    children,
+    img,
+    miniBanner,
+    ...otherProps
 }) {
-	const classes = useStyles();
+    const classes = useStyles();
 
-	return (
-		<Fragment className={classes.heroWrapper}>
-			<Grid container direction='column'>
-				<Grid
-					item
-					className={`${miniBanner ? `${classes.miniBanner}` : ''} ${
+    return ( <
+            Fragment className = { classes.heroWrapper } >
+            <
+            Grid container direction = 'column' >
+            <
+            Grid item className = { `${miniBanner ? `${classes.miniBanner}` : ''} ${
 						classes.banner
 					}`}
 					{...otherProps}
 					{...otherProps}
 					direction='column'
 					style={{
-						backgroundImage: `url(${img})`,
+						backgroundImage: `linear-gradient(rgba(25, 118, 210, 0.5), rgba(33,150,243, 0.7)),url(${img})`,
 					}}
 				>
 					{' '}
@@ -50,9 +50,7 @@ export default function Hero({
 						aria-label='delete'
 						className={classes.margin}
 						size='large'
-					>
-						<ArrowDownwardIcon fontSize='large' />
-					</IconButton>
+					></IconButton>
 				</Grid>
 			</Grid>
 		</Fragment>
@@ -72,8 +70,6 @@ const useStyles = makeStyles((theme) => ({
 		alignItems: 'center',
 		justifyContent: 'center',
 		minHeight: '100vh',
-		backgroundColor: theme.palette.secondary.main,
-		opacity: 0.8,
 		backgroundSize: 'cover',
 	},
 	miniBanner: {
@@ -91,6 +87,8 @@ const useStyles = makeStyles((theme) => ({
 		...theme.typography.title,
 		paddingBottom: '10px',
 		marginBottom: '30px',
+		textTransform: 'capitalize',
+		textShadow: '2px 2px',
 		color: theme.palette.primary.main,
 	},
 	margin: {
