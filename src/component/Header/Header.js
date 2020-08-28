@@ -22,22 +22,20 @@ const Header = () => {
 
 	return (
 		<Fragment>
-			<ElevationScroll>
-				<AppBar position='fixed'>
-					<Toolbar disableGutters>
-						<Button
-							component={Link}
-							to='/'
-							disableRipple
-							className={classes.logoContainer}
-						>
-							<img src={logo} className={classes.logo} alt=' comany logo' />
-						</Button>
-						{matches ? <Sidebar /> : <NavLinks />}
-					</Toolbar>
-				</AppBar>
-			</ElevationScroll>
-			<div className={classes.toolbarMargin} />
+			<AppBar position='fixed'>
+				<Toolbar disableGutters>
+					<Button
+						component={Link}
+						to='/'
+						disableRipple
+						className={classes.logoContainer}
+					>
+						<img src={logo} className={classes.logo} alt=' comany logo' />
+					</Button>{' '}
+					{matches ? <Sidebar /> : <NavLinks />}{' '}
+				</Toolbar>{' '}
+			</AppBar>{' '}
+			<div className={classes.toolbarMargin} />{' '}
 		</Fragment>
 	);
 };

@@ -4,26 +4,25 @@ import mainBcg from '../../img/images/laptop/LP4.jpg';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 
 import Grid from '@material-ui/core/Grid';
 
 export default function Hero({
-    title,
-    subtitle,
-    children,
-    img,
-    miniBanner,
-    ...otherProps
+	title,
+	subtitle,
+	children,
+	img,
+	miniBanner,
+	...otherProps
 }) {
-    const classes = useStyles();
+	const classes = useStyles();
 
-    return ( <
-            Fragment className = { classes.heroWrapper } >
-            <
-            Grid container direction = 'column' >
-            <
-            Grid item className = { `${miniBanner ? `${classes.miniBanner}` : ''} ${
+	return (
+		<Fragment className={classes.heroWrapper}>
+			<Grid container direction='column'>
+				<Grid
+					item
+					className={`${miniBanner ? `${classes.miniBanner}` : ''} ${
 						classes.banner
 					}`}
 					{...otherProps}
@@ -34,7 +33,7 @@ export default function Hero({
 					}}
 				>
 					{' '}
-					<Grid item direction='row'>
+					<Grid item>
 						{' '}
 						<Typography className={classes.title} variant='h1'>
 							{title}
@@ -43,9 +42,7 @@ export default function Hero({
 							<Typography variant='h4'> {subtitle}</Typography>
 						</Grid>
 					</Grid>
-					<Grid justify='flex-start' item>
-						{children}
-					</Grid>
+					<Grid item>{children}</Grid>
 					<IconButton
 						aria-label='delete'
 						className={classes.margin}
@@ -60,9 +57,10 @@ export default function Hero({
 const useStyles = makeStyles((theme) => ({
 	heroWrapper: {
 		flexGrow: 1,
-
-		marginBottom: '2rem',
-		width: '100%',
+		margin: '0 auto',
+		marginBottom: '1rem',
+		minWidth: '100%',
+		marginLeft: '10px',
 	},
 	banner: {
 		textAlign: 'center',
@@ -70,6 +68,7 @@ const useStyles = makeStyles((theme) => ({
 		alignItems: 'center',
 		justifyContent: 'center',
 		minHeight: '100vh',
+
 		backgroundSize: 'cover',
 	},
 	miniBanner: {

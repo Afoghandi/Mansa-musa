@@ -55,7 +55,7 @@ export default createMuiTheme({
             justifyContent: 'center',
             color: `${mainGray}`,
             textTransform: 'capitalize',
-            paddingTop: '1rem',
+            paddingTop: '4rem',
             paddingBottom: '2rem',
             fontSize: '2rem',
         },

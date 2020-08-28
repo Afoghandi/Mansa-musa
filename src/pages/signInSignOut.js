@@ -1,6 +1,5 @@
-import React from 'react';
-import contact from '../img/images/background/contactBcg.jpeg';
-import Hero from '../component/Hero/Hero';
+import React, { Fragment } from 'react';
+
 import SignIn from '../component/Sign-in/SignIn';
 import SignUp from '../component/Sign-up/SignUp';
 
@@ -8,30 +7,35 @@ import { Grid, makeStyles } from '@material-ui/core';
 
 export default function SignInSignOut() {
 	const classes = useStyles();
+	const [spacing] = React.useState(3);
 	return (
-		<div>
+		<Fragment>
 			{' '}
-			<Hero miniBanner img={contact} />{' '}
 			<Grid
 				container
-				direction='row'
-				justify='center'
-				alignItems='center  '
 				className={classes.SignInSignOut}
-				spacing={3}
+				spacing={spacing}
+				justify='center'
 			>
-				<SignIn />
-				<SignUp />
-			</Grid>
-		</div>
+				<Grid item xs={4}>
+					<SignIn />
+				</Grid>{' '}
+				<Grid item xs={4}>
+					<SignUp />
+				</Grid>{' '}
+			</Grid>{' '}
+		</Fragment>
 	);
 }
 
 const useStyles = makeStyles((theme) => ({
 	SignInSignOut: {
-		backgroundColor: 'red',
-		width: '1200px',
-		display: 'flex',
+		flexGrow: 1,
+		//marginTop: '12em',
+
 		margin: '30px auto',
+		[theme.breakpoints.down('md')]: {
+			width: '100%',
+		},
 	},
 }));

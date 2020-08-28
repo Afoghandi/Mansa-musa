@@ -51,6 +51,7 @@ export default function ButtonBases() {
 		<Fragment>
 			<Title title=' Featured Products' />{' '}
 			<div className={classes.directoryWrapper}>
+				{' '}
 				{images.map((image) => (
 					<ButtonBase
 						focusRipple
@@ -80,7 +81,7 @@ export default function ButtonBases() {
 						</span>{' '}
 					</ButtonBase>
 				))}{' '}
-			</div>
+			</div>{' '}
 		</Fragment>
 	);
 }
@@ -90,6 +91,7 @@ const useStyles = makeStyles((theme) => ({
 		flexWrap: 'wrap',
 		minWidth: 300,
 		width: '100%',
+		marginTop: '3em',
 	},
 	image: {
 		position: 'relative',

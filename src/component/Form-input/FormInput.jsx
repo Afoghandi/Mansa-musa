@@ -3,12 +3,12 @@ import React, { Fragment } from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 
-export default function FormInput({ handleChange, label, ...otherProps }) {
+export default function FormInput({ handleChange, ...otherProps }) {
 	const classes = useStyles();
 	return (
 		<Fragment>
-			<Grid container direction='column' className={classes.formGroupWrapp}>
-				<Grid item>
+			<Grid container className={classes.formGroupWrapp}>
+				<Grid item className={classes.formInput}>
 					{' '}
 					<TextField
 						onChange={handleChange}
@@ -29,5 +29,8 @@ const useStyles = makeStyles((theme) => ({
 	formInput: {
 		width: '100%',
 		fontSize: '18px',
+	},
+	[theme.breakpoints.down('sm')]: {
+		width: '100%',
 	},
 }));

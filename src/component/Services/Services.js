@@ -49,14 +49,14 @@ const ServiceData = [
 	},
 ];
 export default function Services() {
-	const [spacing] = React.useState(2);
+	const [spacing] = React.useState(5);
 	const classes = useStyles();
 	return (
 		<Fragment>
-			<Grid Container className={classes.serviceWrapper} spacing={2}>
+			<Grid container className={classes.serviceWrapper} spacing={spacing}>
 				<Grid item xs={12}>
 					<Title title='Our services' />
-					<Grid container justify='center' spacing={spacing}>
+					<Grid container justify='center' direction='row' spacing={spacing}>
 						{' '}
 						{ServiceData.map((item) => {
 							return (
@@ -76,7 +76,7 @@ export default function Services() {
 								</Grid>
 							);
 						})}{' '}
-					</Grid>
+					</Grid>{' '}
 					<Paper elevation={0} /> <Paper />
 				</Grid>{' '}
 			</Grid>{' '}
@@ -86,15 +86,18 @@ export default function Services() {
 const useStyles = makeStyles((theme) => ({
 	serviceWrapper: {
 		flexGrow: 1,
-
-		paddingBottom: '4rem',
+		maxWidth: '100%',
+		paddingBottom: '7rem',
 		paddingTop: '4rem',
+		backgroundColor: theme.palette.lightBlue.lightBlue,
+		display: 'flex',
+		marginLeft: '5px',
 	},
 	paper: {
 		height: 350,
 		width: 370,
 		color: 'white',
-		backgroundColor: theme.palette.lightBlue.lightBlue,
+		//
 		marginBottom: '1rem',
 		paddingBottom: '3rem',
 	},
@@ -112,8 +115,5 @@ const useStyles = makeStyles((theme) => ({
 	text: {
 		...theme.typography.p,
 		color: theme.palette.black.black,
-	},
-	control: {
-		padding: theme.spacing(2),
 	},
 }));
