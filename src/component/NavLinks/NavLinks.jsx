@@ -44,7 +44,7 @@ const NavLinks = () => {
 						label={link.text}
 					/>
 				);
-			})}
+			})}{' '}
 			<Tab icon={<ShoppingBasket color='secondary' />} />{' '}
 		</Tabs>
 	);

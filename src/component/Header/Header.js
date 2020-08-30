@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
+import { auth } from '../../firebase/firebase.utils';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 
@@ -15,7 +16,7 @@ import logo from '../../img/icon/mm.jpg';
 import Sidebar from '../SidebarNav/sidebarNav';
 import NavLinks from '../NavLinks/NavLinks';
 
-const Header = () => {
+const Header = ({ currenUser }) => {
 	const classes = useStyles();
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.down('md'));
@@ -32,6 +33,11 @@ const Header = () => {
 					>
 						<img src={logo} className={classes.logo} alt=' comany logo' />
 					</Button>{' '}
+					{currenUser ? (
+						<div onClick={() => auth.signOut()}>Sign Out </div>
+					) : (
+						<Link to='/signin'> Sign In</Link>
+					)}
 					{matches ? <Sidebar /> : <NavLinks />}{' '}
 				</Toolbar>{' '}
 			</AppBar>{' '}
