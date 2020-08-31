@@ -16,7 +16,7 @@ import logo from '../../img/icon/mm.jpg';
 import Sidebar from '../SidebarNav/sidebarNav';
 import NavLinks from '../NavLinks/NavLinks';
 
-const Header = ({ currenUser }) => {
+const Header = ({ currentUser }) => {
 	const classes = useStyles();
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.down('md'));
@@ -33,12 +33,7 @@ const Header = ({ currenUser }) => {
 					>
 						<img src={logo} className={classes.logo} alt=' comany logo' />
 					</Button>{' '}
-					{currenUser ? (
-						<div onClick={() => auth.signOut()}>Sign Out </div>
-					) : (
-						<Link to='/signin'> Sign In</Link>
-					)}
-					{matches ? <Sidebar /> : <NavLinks />}{' '}
+					{matches ? <Sidebar /> : <NavLinks currentUser={currentUser} />}{' '}
 				</Toolbar>{' '}
 			</AppBar>{' '}
 			<div className={classes.toolbarMargin} />{' '}

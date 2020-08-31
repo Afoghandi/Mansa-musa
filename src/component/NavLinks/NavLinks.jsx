@@ -7,8 +7,9 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import ShoppingBasket from '@material-ui/icons/ShoppingBasket';
 import { linkData } from './LinkData';
+import { auth } from '../../firebase/firebase.utils';
 
-const NavLinks = () => {
+const NavLinks = ({ currentUser }) => {
 	const classes = useStyles();
 
 	const [value, setValue] = useState(0);
@@ -44,8 +45,19 @@ const NavLinks = () => {
 						label={link.text}
 					/>
 				);
-			})}{' '}
+			})}
 			<Tab icon={<ShoppingBasket color='secondary' />} />{' '}
+			{currentUser ? (
+				<div onClick={() => auth.signOut()} className={classes.Link}>
+					{' '}
+					Sign Out
+				</div>
+			) : (
+				<Link to='/signin' className={classes.Link}>
+					{' '}
+					Sign In
+				</Link>
+			)}
 		</Tabs>
 	);
 
@@ -62,5 +74,13 @@ const useStyles = makeStyles((theme) => ({
 		...theme.typography.tab,
 		minWidth: 10,
 		marginLeft: '25px',
+	},
+	Link: {
+		...theme.typography.tab,
+		minWidth: 10,
+		//marginLeft: '5px',
+		color: 'white',
+		marginTop: '12px',
+		paddingLeft: '5px',
 	},
 }));
