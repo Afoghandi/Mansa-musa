@@ -1,11 +1,10 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
-import { auth } from '../../firebase/firebase.utils';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
+//import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import { makeStyles } from '@material-ui/styles';
@@ -59,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
 
 //elevation scroll for the navbar
 
-function ElevationScroll(props) {
+/**function ElevationScroll(props) {
 	const { children } = props;
 
 	const trigger = useScrollTrigger({
@@ -70,4 +69,4 @@ function ElevationScroll(props) {
 	return React.cloneElement(children, {
 		elevation: trigger ? 4 : 0,
 	});
-}
+}**/

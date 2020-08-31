@@ -46,7 +46,6 @@ const NavLinks = ({ currentUser }) => {
 					/>
 				);
 			})}
-			<Tab icon={<ShoppingBasket color='secondary' />} />{' '}
 			{currentUser ? (
 				<div onClick={() => auth.signOut()} className={classes.Link}>
 					{' '}
@@ -58,6 +57,7 @@ const NavLinks = ({ currentUser }) => {
 					Sign In
 				</Link>
 			)}
+			<Tab icon={<ShoppingBasket color='secondary' />} />{' '}
 		</Tabs>
 	);
 

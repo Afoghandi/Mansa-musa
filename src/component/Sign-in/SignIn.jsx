@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { signInWithGoogle } from '../../firebase/firebase.utils';
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
 import { Grid, makeStyles } from '@material-ui/core';
 
 import FormInput from '../Form-input/FormInput';
@@ -14,21 +14,30 @@ export default function SignIn() {
 	const handleChange = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
 	};
+	const handleSubmit = async (e) => {
+		e.preventDefeault();
+		try {
+			await auth.signInWithEmailAndPassword(email, password);
+			setFormData({ email: '', password: '' });
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	return (
 		<Grid container justify='center' className={classes.signInWrapper}>
 			<Grid item sm={8} align='center' className={classes.signIn}>
 				{' '}
-				<h2>I already have an account {email} </h2>{' '}
+				<h2>I already have an account </h2>{' '}
 				<span>Sign in with your email and password</span>{' '}
-				<form onSubmit>
+				<form onSubmit={handleSubmit}>
 					<FormInput
 						name='email'
 						type='email'
 						value={email}
+						placeholder='Display Name'
 						required
 						label='required'
-						defaultValue='email'
 						onChange={(e) => handleChange(e)}
 					/>
 					<FormInput
@@ -41,8 +50,8 @@ export default function SignIn() {
 						required
 					/>{' '}
 					<Grid container direction='row' justify='space-evenly'>
-						<Grid item spacing={2} className={classes.buttons}>
-							<CustomButton>sign in</CustomButton>{' '}
+						<Grid item className={classes.buttons}>
+							<CustomButton type='submit'>sign in</CustomButton>{' '}
 						</Grid>
 						<Grid item className={classes.buttons}>
 							<CustomButton isGoogleSignIn onClick={signInWithGoogle}>

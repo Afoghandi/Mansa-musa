@@ -62,7 +62,6 @@ export default function SignUp() {
 						type='email'
 						required
 						label='required'
-						defaultValue='email'
 						placeholder='Email'
 						value={email}
 						onChange={handleChange}
@@ -90,7 +89,7 @@ export default function SignUp() {
 						onChange={handleChange}
 					/>{' '}
 					<Grid container direction='row' justify='space-evenly'>
-						<Grid item spacing={2}>
+						<Grid item>
 							<CustomButton type='submit'>sign up</CustomButton>{' '}
 						</Grid>
 					</Grid>
