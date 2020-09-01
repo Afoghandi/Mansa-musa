@@ -1,40 +1,31 @@
 import React, { Fragment } from 'react';
 
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 import Header from './component/Header/Header';
 
 import { homepage, shop, signInSignOut, contact } from './pages';
-
-//import styles from './App.module.css';
+import { setCurrentUser } from './redux/user/user.actions';
+import SignInSignOut from './pages/signInSignOut';
 
 class App extends React.Component {
-	constructor() {
-		super();
-		this.state = {
-			currentUser: null,
-		};
-	}
 	unsubscribeFromAuth = null;
 	componentDidMount() {
-		//const { setCurrentUser } = this.props;
+		const { setCurrentUser } = this.props;
 		this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
 			if (userAuth) {
 				const userRef = await createUserProfileDocument(userAuth);
 				userRef.onSnapshot((snapShot) => {
-					this.setState(
-						{
-							currentUser: { id: snapShot.id, ...snapShot.data() },
-						},
-						() => {
-							console.log(this.state);
-						}
-					);
+					setCurrentUser({
+						id: snapShot.id,
+						...snapShot.data(),
+					});
 				});
 			} else {
-				this.setState({ currentUser: userAuth });
+				setCurrentUser(userAuth);
 			}
 		});
 	}
@@ -42,18 +33,40 @@ class App extends React.Component {
 		this.unsubscribeFromAuth();
 	}
 	render() {
+		const { currentUser } = this.props;
 		return (
 			<Fragment>
-				<Header currentUser={this.state.currentUser} />
+				<Header />
 				<Switch>
 					<Route exact path='/' component={homepage} />{' '}
-					<Route exact path='/shop' component={shop} />{' '}
-					<Route exact path='/signin' component={signInSignOut} />{' '}
+					<Route
+						exact
+						path='/shop'
+						render={() =>
+							currentUser ? <Redirect to='/shop' /> : <SignInSignOut />
+						}
+					/>{' '}
+					<Route
+						exact
+						path='/signin'
+						render={() =>
+							currentUser ? <Redirect to='/shop' /> : <SignInSignOut />
+						}
+					/>{' '}
 					<Route exact path='/contact' component={contact} />{' '}
 				</Switch>{' '}
 			</Fragment>
 		);
 	}
 }
+//obtain user from state
+const mapStateToProps = ({ user }) => ({
+	currentUser: user.currentUser,
+});
 
-export default App;
+//dispatches action from redux
+const mapDispatchToProps = (dispatch) => ({
+	setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

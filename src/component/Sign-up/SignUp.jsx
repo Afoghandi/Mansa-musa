@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
 import FormInput from '../Form-input/FormInput';
 import CustomButton from '../../ui/CustomButton';
@@ -6,7 +6,7 @@ import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 
 export default function SignUp() {
 	const classes = useStyles();
-	const [formData, setFormData] = React.useState({
+	const [formData, setFormData] = useState({
 		displayName: '',
 		email: '',
 		password: '',

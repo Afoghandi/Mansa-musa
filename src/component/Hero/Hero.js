@@ -18,38 +18,40 @@ export default function Hero({
 	const classes = useStyles();
 
 	return (
-		<Fragment className={classes.heroWrapper}>
-			<Grid container direction='column'>
-				<Grid
-					item
-					className={`${miniBanner ? `${classes.miniBanner}` : ''} ${
-						classes.banner
-					}`}
-					{...otherProps}
-					{...otherProps}
-					direction='column'
-					style={{
-						backgroundImage: `linear-gradient(rgba(25, 118, 210, 0.5), rgba(33,150,243, 0.7)),url(${img})`,
-					}}
-				>
-					{' '}
-					<Grid item>
+		<Fragment>
+			<div className={classes.heroWrapper}>
+				<Grid container direction='column'>
+					<Grid
+						item
+						className={`${miniBanner ? `${classes.miniBanner}` : ''} ${
+							classes.banner
+						}`}
+						{...otherProps}
+						{...otherProps}
+						direction='column'
+						style={{
+							backgroundImage: `linear-gradient(rgba(25, 118, 210, 0.5), rgba(33,150,243, 0.7)),url(${img})`,
+						}}
+					>
 						{' '}
-						<Typography className={classes.title} variant='h1'>
-							{title}
-						</Typography>{' '}
-						<Grid item className={classes.subtitle}>
-							<Typography variant='h4'> {subtitle}</Typography>
+						<Grid item>
+							{' '}
+							<Typography className={classes.title} variant='h1'>
+								{title}
+							</Typography>{' '}
+							<Grid item className={classes.subtitle}>
+								<Typography variant='h4'> {subtitle}</Typography>
+							</Grid>
 						</Grid>
+						<Grid item>{children}</Grid>
+						<IconButton
+							aria-label='delete'
+							className={classes.margin}
+							size='large'
+						></IconButton>
 					</Grid>
-					<Grid item>{children}</Grid>
-					<IconButton
-						aria-label='delete'
-						className={classes.margin}
-						size='large'
-					></IconButton>
 				</Grid>
-			</Grid>
+			</div>
 		</Fragment>
 	);
 }
@@ -60,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
 		margin: '0 auto',
 		marginBottom: '1rem',
 		minWidth: '100%',
-		marginLeft: '10px',
+		//marginLeft: '10px',
 	},
 	banner: {
 		textAlign: 'center',

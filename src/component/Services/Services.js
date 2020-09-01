@@ -53,45 +53,47 @@ export default function Services() {
 	const classes = useStyles();
 	return (
 		<Fragment>
-			<Grid container className={classes.serviceWrapper} spacing={spacing}>
-				<Grid item xs={12}>
-					<Title title='Our services' />
-					<Grid container justify='center' direction='row' spacing={spacing}>
-						{' '}
-						{ServiceData.map((item) => {
-							return (
-								<Grid item key={item.id}>
-									<Paper className={classes.paper} align='center'>
-										<Grid item className={classes.icon}>
-											{' '}
-											{item.icon}{' '}
-										</Grid>{' '}
-										<Typography variant='h6'> {item.header} </Typography>{' '}
-										<Typography className={classes.text} variant='p'>
-											{' '}
-											{item.text}{' '}
-										</Typography>{' '}
-										<p> </p>{' '}
-									</Paper>{' '}
-								</Grid>
-							);
-						})}{' '}
+			<div className={classes.serviceWrapper}>
+				<Grid container spacing={spacing}>
+					<Grid item xs={12}>
+						<Title title='Our services' />
+						<Grid container justify='center' direction='row' spacing={spacing}>
+							{' '}
+							{ServiceData.map((item) => {
+								return (
+									<Grid item key={item.id}>
+										<Paper className={classes.paper} align='center'>
+											<Grid item className={classes.icon}>
+												{' '}
+												{item.icon}{' '}
+											</Grid>{' '}
+											<Typography variant='h6'> {item.header} </Typography>{' '}
+											<Typography className={classes.text} variant='p'>
+												{' '}
+												{item.text}{' '}
+											</Typography>{' '}
+											<p> </p>{' '}
+										</Paper>{' '}
+									</Grid>
+								);
+							})}{' '}
+						</Grid>{' '}
+						<Paper elevation={0} /> <Paper />
 					</Grid>{' '}
-					<Paper elevation={0} /> <Paper />
 				</Grid>{' '}
-			</Grid>{' '}
+			</div>{' '}
 		</Fragment>
 	);
 }
 const useStyles = makeStyles((theme) => ({
 	serviceWrapper: {
 		flexGrow: 1,
-		maxWidth: '100%',
+		minWidth: '100%',
 		paddingBottom: '7rem',
 		paddingTop: '4rem',
 		backgroundColor: theme.palette.lightBlue.lightBlue,
 		display: 'flex',
-		marginLeft: '5px',
+		//marginLeft: '5px',
 	},
 	paper: {
 		height: 350,

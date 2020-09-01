@@ -11,11 +11,12 @@ export default function SignIn() {
 	const [formData, setFormData] = useState({ email: '', password: '' });
 
 	const { email, password } = formData;
+
 	const handleChange = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
 	};
 	const handleSubmit = async (e) => {
-		e.preventDefeault();
+		e.preventDefault();
 		try {
 			await auth.signInWithEmailAndPassword(email, password);
 			setFormData({ email: '', password: '' });
@@ -34,11 +35,11 @@ export default function SignIn() {
 					<FormInput
 						name='email'
 						type='email'
-						value={email}
-						placeholder='Display Name'
+						placeholder='Email'
 						required
 						label='required'
-						onChange={(e) => handleChange(e)}
+						value={email}
+						onChange={handleChange}
 					/>
 					<FormInput
 						id='filled-password-input'
@@ -47,6 +48,7 @@ export default function SignIn() {
 						autoComplete='current-password'
 						placeholder='Password'
 						password={password}
+						onChange={handleChange}
 						required
 					/>{' '}
 					<Grid container direction='row' justify='space-evenly'>
