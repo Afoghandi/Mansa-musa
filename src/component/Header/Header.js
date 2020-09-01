@@ -15,7 +15,7 @@ import logo from '../../img/icon/mm.jpg';
 import Sidebar from '../SidebarNav/sidebarNav';
 import NavLinks from '../NavLinks/NavLinks';
 
-const Header = ({ currentUser }) => {
+const Header = () => {
 	const classes = useStyles();
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.down('md'));
@@ -32,7 +32,7 @@ const Header = ({ currentUser }) => {
 					>
 						<img src={logo} className={classes.logo} alt=' comany logo' />
 					</Button>{' '}
-					{matches ? <Sidebar /> : <NavLinks currentUser={currentUser} />}{' '}
+					{matches ? <Sidebar /> : <NavLinks />}{' '}
 				</Toolbar>{' '}
 			</AppBar>{' '}
 			<div className={classes.toolbarMargin} />{' '}

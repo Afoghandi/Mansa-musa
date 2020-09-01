@@ -1,13 +1,16 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import { makeStyles } from '@material-ui/styles';
 
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import ShoppingBasket from '@material-ui/icons/ShoppingBasket';
+
 import { linkData } from './LinkData';
 import { auth } from '../../firebase/firebase.utils';
+
+import CartIcon from '../Cart-icon/CartIcon';
 
 const NavLinks = ({ currentUser }) => {
 	const classes = useStyles();
@@ -57,14 +60,17 @@ const NavLinks = ({ currentUser }) => {
 					Sign In
 				</Link>
 			)}
-			<Tab icon={<ShoppingBasket color='secondary' />} />{' '}
+			<CartIcon />
 		</Tabs>
 	);
 
 	return <Fragment> {tabs} </Fragment>;
 };
 
-export default NavLinks;
+const mapStateToProps = (state) => ({
+	currentUser: state.user.currentUser,
+});
+export default connect(mapStateToProps)(NavLinks);
 
 const useStyles = makeStyles((theme) => ({
 	tabContainer: {
@@ -82,5 +88,7 @@ const useStyles = makeStyles((theme) => ({
 		color: 'white',
 		marginTop: '12px',
 		paddingLeft: '5px',
+		paddingRight: '10px',
+		textDecoration: 'none',
 	},
 }));
