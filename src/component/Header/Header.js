@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -18,7 +19,7 @@ import Sidebar from '../SidebarNav/sidebarNav';
 import NavLinks from '../NavLinks/NavLinks';
 import CartDropdown from '../Cart-dropdown/CartDropdown';
 
-const Header = () => {
+const Header = ({ hidden }) => {
 	const classes = useStyles();
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.down('md'));
@@ -36,14 +37,17 @@ const Header = () => {
 						<img src={logo} className={classes.logo} alt=' comany logo' />
 					</Button>{' '}
 					{matches ? <Sidebar /> : <NavLinks />} <CartIcon />
-					<CartDropdown />
+					{hidden ? null : <CartDropdown />}
 				</Toolbar>{' '}
 			</AppBar>{' '}
 			<div className={classes.toolbarMargin} />{' '}
 		</Fragment>
 	);
 };
-export default Header;
+const mapStateToProps = ({ cart: { hidden } }) => ({
+	hidden,
+});
+export default connect(mapStateToProps)(Header);
 
 //In line styling
 const useStyles = makeStyles((theme) => ({
