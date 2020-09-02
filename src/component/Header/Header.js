@@ -11,9 +11,12 @@ import { makeStyles } from '@material-ui/styles';
 import { Button } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 
+import CartIcon from '../Cart-icon/CartIcon';
+
 import logo from '../../img/icon/mm.jpg';
 import Sidebar from '../SidebarNav/sidebarNav';
 import NavLinks from '../NavLinks/NavLinks';
+import CartDropdown from '../Cart-dropdown/CartDropdown';
 
 const Header = () => {
 	const classes = useStyles();
@@ -32,7 +35,8 @@ const Header = () => {
 					>
 						<img src={logo} className={classes.logo} alt=' comany logo' />
 					</Button>{' '}
-					{matches ? <Sidebar /> : <NavLinks />}{' '}
+					{matches ? <Sidebar /> : <NavLinks />} <CartIcon />
+					<CartDropdown />
 				</Toolbar>{' '}
 			</AppBar>{' '}
 			<div className={classes.toolbarMargin} />{' '}

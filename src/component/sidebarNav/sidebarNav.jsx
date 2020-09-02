@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { makeStyles } from '@material-ui/styles';
+
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import IconButton from '@material-ui/core/IconButton';
+
+import ListItemText from '@material-ui/core/ListItemText';
+import MenuIcon from '@material-ui/icons/Menu';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import { makeStyles } from '@material-ui/styles';
-import MenuIcon from '@material-ui/icons/Menu';
+
 import { linkData } from '../NavLinks/LinkData';
 
 const Sidebar = () => {
@@ -25,6 +28,7 @@ const Sidebar = () => {
 				classes={{ paper: classes.drawer }}
 			>
 				<List>
+					{' '}
 					{linkData.map((link) => {
 						return (
 							<ListItem
@@ -39,11 +43,11 @@ const Sidebar = () => {
 								label={link.text}
 								className={classes.sidebarLink}
 							>
-								<ListItemText>{link.text} </ListItemText>{' '}
+								<ListItemText> {link.text} </ListItemText>{' '}
 							</ListItem>
 						);
-					})}
-				</List>
+					})}{' '}
+				</List>{' '}
 			</SwipeableDrawer>{' '}
 			<IconButton
 				justify='center'

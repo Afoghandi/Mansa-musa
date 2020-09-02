@@ -10,8 +10,6 @@ import Tab from '@material-ui/core/Tab';
 import { linkData } from './LinkData';
 import { auth } from '../../firebase/firebase.utils';
 
-import CartIcon from '../Cart-icon/CartIcon';
-
 const NavLinks = ({ currentUser }) => {
 	const classes = useStyles();
 
@@ -27,41 +25,41 @@ const NavLinks = ({ currentUser }) => {
 			setValue(1);
 		} else if (window.location.pathname === '/contact' && value !== 2) {
 			setValue(2);
-		} else if (window.location.pathname === '/signin' && value !== 3) {
-			setValue(3);
 		}
 	}, [value]);
 
 	const tabs = (
-		<Tabs
-			className={classes.tabContainer}
-			value={value}
-			onChange={handleChange}
-		>
-			{linkData.map((link) => {
-				return (
-					<Tab
-						key={link.id}
-						className={classes.tab}
-						component={Link}
-						to={link.path}
-						label={link.text}
-					/>
-				);
-			})}
-			{currentUser ? (
-				<div onClick={() => auth.signOut()} className={classes.Link}>
-					{' '}
-					Sign Out
-				</div>
-			) : (
-				<Link to='/signin' className={classes.Link}>
-					{' '}
-					Sign In
-				</Link>
-			)}
-			<CartIcon />
-		</Tabs>
+		<Fragment>
+			{' '}
+			<Tabs
+				className={classes.tabContainer}
+				value={value}
+				onChange={handleChange}
+			>
+				{linkData.map((link) => {
+					return (
+						<Tab
+							key={link.id}
+							className={classes.tab}
+							component={Link}
+							to={link.path}
+							label={link.text}
+						/>
+					);
+				})}
+				{currentUser ? (
+					<div onClick={() => auth.signOut()} className={classes.Link}>
+						{' '}
+						Sign Out
+					</div>
+				) : (
+					<Link to='/signin' className={classes.Link}>
+						{' '}
+						Sign In
+					</Link>
+				)}
+			</Tabs>
+		</Fragment>
 	);
 
 	return <Fragment> {tabs} </Fragment>;
@@ -84,11 +82,12 @@ const useStyles = makeStyles((theme) => ({
 	Link: {
 		...theme.typography.tab,
 		minWidth: 10,
-		//marginLeft: '5px',
+		cursor: 'pointer',
 		color: 'white',
+		fontSize: '1rem',
 		marginTop: '12px',
-		paddingLeft: '5px',
-		paddingRight: '10px',
+		paddingLeft: '15px',
+		paddingRight: '20px',
 		textDecoration: 'none',
 	},
 }));
