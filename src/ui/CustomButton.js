@@ -38,6 +38,16 @@ const useStyles = makeStyles((theme) => ({
 			border: 'none',
 		},
 	},
+	inverted: {
+		backgroundColor: 'white',
+		color: 'black',
+		border: '1px solid black',
+		'&:hover': {
+			backgroundColor: 'black',
+			color: 'white',
+			border: 'none',
+		},
+	},
 }));
 
 export default CustomButton;
