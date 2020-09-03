@@ -9,8 +9,8 @@ function CustomButton({ children, isGoogleSignIn, inverted, ...otherProps }) {
 		<Button
 			variant='contained'
 			color='secondary'
-			className={` ${classes.inverted ? 'inverted' : ''} ${
-				isGoogleSignIn ? `${classes.googleSignIn}` : ''
+			className={` ${isGoogleSignIn ? `${classes.googleSignIn}` : ''}${
+				inverted ? `${classes.inverted}` : ''
 			} ${classes.button}`}
 			{...otherProps}
 		>
@@ -42,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
 		backgroundColor: 'white',
 		color: 'black',
 		border: '1px solid black',
+
 		'&:hover': {
 			backgroundColor: 'black',
 			color: 'white',

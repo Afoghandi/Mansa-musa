@@ -7,11 +7,9 @@ import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 import Header from './component/Header/Header';
 
-import { homepage, contact } from './pages';
+import { homepage, contact, shopPage, signInSignOut } from './pages';
 
 import { setCurrentUser } from './redux/user/user.actions';
-import SignInSignOut from './pages/signInSignOut';
-import ShopPage from './pages/shop';
 
 class App extends React.Component {
 	unsubscribeFromAuth = null;
@@ -41,19 +39,16 @@ class App extends React.Component {
 				<Header />
 				<Switch>
 					<Route exact path='/' component={homepage} />{' '}
-					<Route exact path='/shop' component={ShopPage} />
-					<Route
-						exact
-						path='/shop'
-						render={() =>
-							currentUser ? <Redirect to='/' /> : <SignInSignOut />
-						}
-					/>{' '}
+					<Route exact path='/shop' component={shopPage} />
 					<Route
 						exact
 						path='/signin'
 						render={() =>
-							currentUser ? <Redirect to='/' /> : <SignInSignOut />
+							currentUser ? (
+								<Redirect to='/shop' />
+							) : (
+								<Route component={signInSignOut} />
+							)
 						}
 					/>
 					<Route exact path='/contact' component={contact} />{' '}

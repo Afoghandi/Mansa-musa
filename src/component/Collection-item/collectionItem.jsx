@@ -1,25 +1,44 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
+import { addItem } from '../../redux/cart/cart.actions';
 
 import { makeStyles } from '@material-ui/styles';
 import Paper from '@material-ui/core/paper';
 
-const CollectionItems = ({ id, name, price, imageUrl }) => {
+import CustomButton from '../../ui/CustomButton';
+
+const CollectionItems = ({ item, addItem }) => {
+	const { name, price, imageUrl } = item;
 	const classes = useStyles();
 
 	return (
-		<Paper className={classes.collectionItem}>
-			<div
-				className={classes.image}
-				style={{ backgroundImage: `url(../${imageUrl})` }}
-			/>
+		<Fragment>
+			<Paper className={classes.collectionItem}>
+				<div
+					className={classes.image}
+					style={{ backgroundImage: `url(../${imageUrl})` }}
+				/>
 
-			<div className={classes.collectionFooter}>
-				<span className={classes.name}>{name} </span>
-				<span className={classes.price}>£{price} </span>
-			</div>
-		</Paper>
+				<div className={classes.collectionFooter}>
+					<span className={classes.name}>{name} </span>
+					<span className={classes.price}>£{price} </span>
+				</div>
+				<CustomButton
+					inverted
+					className={classes.customButton}
+					onClick={() => addItem(item)}
+				>
+					{' '}
+					Add to cart
+				</CustomButton>
+			</Paper>
+		</Fragment>
 	);
 };
+const mapDispatchToProps = (dispatch) => ({
+	addItem: (item) => dispatch(addItem(item)),
+});
+
 const useStyles = makeStyles((theme) => ({
 	collectionItem: {
 		marginTop: '10px',
@@ -30,6 +49,23 @@ const useStyles = makeStyles((theme) => ({
 		flexDirection: 'column',
 		height: '370px',
 		alignItems: 'center',
+		position: 'relative',
+	},
+
+	customButton: {
+		width: '80%',
+		opacity: '0.7',
+		position: 'absolute',
+		top: '255px',
+	},
+	'&:hover': {
+		'& image': {
+			opacity: '0.8',
+		},
+		'& customButton': {
+			opacity: '0.85',
+			display: 'flex',
+		},
 	},
 	image: {
 		width: '100%',
@@ -55,4 +91,5 @@ const useStyles = makeStyles((theme) => ({
 		width: '15%',
 	},
 }));
-export default CollectionItems;
+
+export default connect(null, mapDispatchToProps)(CollectionItems);
