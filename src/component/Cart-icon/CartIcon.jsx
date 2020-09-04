@@ -8,8 +8,9 @@ import IconButton from '@material-ui/core/IconButton';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 import { toggleCartHidden } from '../../redux/cart/cart.actions';
+import { selectCartItemsCount } from '../../redux/cart/cart.selectors';
 
-function CartIcon({ toggleCartHidden }) {
+function CartIcon({ toggleCartHidden, itemCount }) {
 	const classes = useStyles();
 	return (
 		<IconButton aria-label='cart'>
@@ -18,7 +19,7 @@ function CartIcon({ toggleCartHidden }) {
 					className={classes.shoppingIcon}
 					onClick={toggleCartHidden}
 				/>
-				<span className={classes.itemCount}>0</span>
+				<span className={classes.itemCount}>{itemCount}</span>
 			</div>
 		</IconButton>
 	);
@@ -27,7 +28,11 @@ function CartIcon({ toggleCartHidden }) {
 const mapDispatchToProps = (dispatch) => ({
 	toggleCartHidden: () => dispatch(toggleCartHidden()),
 });
-export default connect(null, mapDispatchToProps)(CartIcon);
+
+const mapStateToProps = (state) => ({
+	itemCount: selectCartItemsCount(state),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
 const useStyles = makeStyles((theme) => ({
 	shoppingIcon: {
 		right: 3,
