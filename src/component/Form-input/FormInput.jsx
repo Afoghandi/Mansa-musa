@@ -14,9 +14,9 @@ export default function FormInput({ handleChange, ...otherProps }) {
 						onChange={handleChange}
 						{...otherProps}
 						className={classes.formInput}
-					/>
-				</Grid>
-			</Grid>
+					/>{' '}
+				</Grid>{' '}
+			</Grid>{' '}
 		</Fragment>
 	);
 }

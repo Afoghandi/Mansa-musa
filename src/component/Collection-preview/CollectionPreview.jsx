@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 
 import { makeStyles } from '@material-ui/styles';
-import Typography from '@material-ui/core/Typography';
 
 import CollectionItem from '../Collection-item/collectionItem';
+import Title from '../../ui/Title';
 
 const CollectionPreview = ({ title, items }) => {
 	const classes = useStyles();
@@ -11,7 +11,7 @@ const CollectionPreview = ({ title, items }) => {
 	return (
 		<Fragment>
 			<div className={classes.collectionPreview}>
-				<Typography variant='h2'> {title.toUpperCase()} </Typography>{' '}
+				<Title title={title.toUpperCase()} />
 				<div className={classes.preview}>
 					{' '}
 					{items
@@ -25,7 +25,11 @@ const CollectionPreview = ({ title, items }) => {
 	);
 };
 
-const useStyles = makeStyles((theme) => ({
+export default CollectionPreview;
+
+//styles
+
+const useStyles = makeStyles(() => ({
 	collectionPreview: {
 		display: 'flex',
 		flexDirection: 'column',
@@ -37,4 +41,3 @@ const useStyles = makeStyles((theme) => ({
 		justifyContent: 'space-between',
 	},
 }));
-export default CollectionPreview;

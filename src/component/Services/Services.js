@@ -93,7 +93,6 @@ const useStyles = makeStyles((theme) => ({
 		paddingTop: '4rem',
 		backgroundColor: theme.palette.lightBlue.lightBlue,
 		display: 'flex',
-		//marginLeft: '5px',
 	},
 	paper: {
 		height: 350,

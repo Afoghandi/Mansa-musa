@@ -1,4 +1,5 @@
 import React from 'react';
+import { createStructuredSelector } from 'reselect';
 
 import { makeStyles } from '@material-ui/styles';
 
@@ -29,10 +30,12 @@ const mapDispatchToProps = (dispatch) => ({
 	toggleCartHidden: () => dispatch(toggleCartHidden()),
 });
 
-const mapStateToProps = (state) => ({
-	itemCount: selectCartItemsCount(state),
+const mapStateToProps = createStructuredSelector({
+	itemCount: selectCartItemsCount,
 });
 export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
+
+//Styles
 const useStyles = makeStyles((theme) => ({
 	shoppingIcon: {
 		right: 3,

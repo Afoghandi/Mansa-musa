@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import { makeStyles } from '@material-ui/styles';
 
@@ -9,6 +10,7 @@ import Tab from '@material-ui/core/Tab';
 
 import { linkData } from './LinkData';
 import { auth } from '../../firebase/firebase.utils';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 const NavLinks = ({ currentUser }) => {
 	const classes = useStyles();
@@ -46,29 +48,31 @@ const NavLinks = ({ currentUser }) => {
 							label={link.text}
 						/>
 					);
-				})}
+				})}{' '}
 				{currentUser ? (
 					<div onClick={() => auth.signOut()} className={classes.Link}>
 						{' '}
-						Sign Out
+						Sign Out{' '}
 					</div>
 				) : (
 					<Link to='/signin' className={classes.Link}>
 						{' '}
-						Sign In
+						Sign In{' '}
 					</Link>
-				)}
-			</Tabs>
+				)}{' '}
+			</Tabs>{' '}
 		</Fragment>
 	);
 
 	return <Fragment> {tabs} </Fragment>;
 };
 
-const mapStateToProps = (state) => ({
-	currentUser: state.user.currentUser,
+const mapStateToProps = createStructuredSelector({
+	currentUser: selectCurrentUser,
 });
 export default connect(mapStateToProps)(NavLinks);
+
+//styles
 
 const useStyles = makeStyles((theme) => ({
 	tabContainer: {

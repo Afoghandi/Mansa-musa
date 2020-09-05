@@ -2,10 +2,9 @@ import React, { Fragment } from 'react';
 import mainBcg from '../../img/images/laptop/LP4.jpg';
 
 import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-
-import Grid from '@material-ui/core/Grid';
 
 export default function Hero({
 	title,
@@ -26,7 +25,6 @@ export default function Hero({
 						className={`${miniBanner ? `${classes.miniBanner}` : ''} ${
 							classes.banner
 						}`}
-						{...otherProps}
 						{...otherProps}
 						direction='column'
 						style={{
@@ -62,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
 		margin: '0 auto',
 		marginBottom: '1rem',
 		minWidth: '100%',
-		//marginLeft: '10px',
+		marginLeft: '10px',
 	},
 	banner: {
 		textAlign: 'center',

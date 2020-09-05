@@ -2,14 +2,23 @@ import React, { Fragment } from 'react';
 
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 import Header from './component/Header/Header';
 
-import { homepage, contact, shopPage, signInSignOut } from './pages';
+import {
+	homepage,
+	contact,
+	shopPage,
+	signInSignOut,
+	checkoutPage,
+	singleProduct,
+} from './pages';
 
 import { setCurrentUser } from './redux/user/user.actions';
+import { selectCurrentUser } from './redux/user/user.selectors';
 
 class App extends React.Component {
 	unsubscribeFromAuth = null;
@@ -39,7 +48,7 @@ class App extends React.Component {
 				<Header />
 				<Switch>
 					<Route exact path='/' component={homepage} />{' '}
-					<Route exact path='/shop' component={shopPage} />
+					<Route path='/shop' component={shopPage} />
 					<Route
 						exact
 						path='/signin'
@@ -51,6 +60,8 @@ class App extends React.Component {
 							)
 						}
 					/>
+					<Route exact path='/checkout' component={checkoutPage} />{' '}
+					<Route exact path='/singleProduct' component={singleProduct} />{' '}
 					<Route exact path='/contact' component={contact} />{' '}
 				</Switch>{' '}
 			</Fragment>
@@ -58,8 +69,8 @@ class App extends React.Component {
 	}
 }
 //obtain user from state
-const mapStateToProps = ({ user }) => ({
-	currentUser: user.currentUser,
+const mapStateToProps = createStructuredSelector({
+	currentUser: selectCurrentUser,
 });
 
 //dispatches action from redux

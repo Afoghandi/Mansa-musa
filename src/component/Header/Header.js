@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 
-//import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import { makeStyles } from '@material-ui/styles';
@@ -18,6 +18,7 @@ import logo from '../../img/icon/mm.jpg';
 import Sidebar from '../SidebarNav/sidebarNav';
 import NavLinks from '../NavLinks/NavLinks';
 import CartDropdown from '../Cart-dropdown/CartDropdown';
+import { selectCartHidden } from '../../redux/cart/cart.selectors';
 
 const Header = ({ hidden }) => {
 	const classes = useStyles();
@@ -44,8 +45,8 @@ const Header = ({ hidden }) => {
 		</Fragment>
 	);
 };
-const mapStateToProps = ({ cart: { hidden } }) => ({
-	hidden,
+const mapStateToProps = createStructuredSelector({
+	hidden: selectCartHidden,
 });
 export default connect(mapStateToProps)(Header);
 
@@ -63,18 +64,3 @@ const useStyles = makeStyles((theme) => ({
 		cursor: 'pointer',
 	},
 }));
-
-//elevation scroll for the navbar
-
-/**function ElevationScroll(props) {
-	const { children } = props;
-
-	const trigger = useScrollTrigger({
-		disableHysteresis: true,
-		threshold: 0,
-	});
-
-	return React.cloneElement(children, {
-		elevation: trigger ? 4 : 0,
-	});
-}**/

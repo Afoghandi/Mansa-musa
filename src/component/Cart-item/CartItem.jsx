@@ -17,6 +17,8 @@ const CartItem = ({ item: { imageUrl, price, name, quantity } }) => {
 		</div>
 	);
 };
+
+export default CartItem;
 const useStyles = makeStyles((theme) => ({
 	cartItem: {
 		width: '100%',
@@ -43,4 +45,3 @@ const useStyles = makeStyles((theme) => ({
 		marginLeft: '5px',
 	},
 }));
-export default CartItem;

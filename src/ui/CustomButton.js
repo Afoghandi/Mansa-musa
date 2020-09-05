@@ -9,9 +9,11 @@ function CustomButton({ children, isGoogleSignIn, inverted, ...otherProps }) {
 		<Button
 			variant='contained'
 			color='secondary'
-			className={` ${isGoogleSignIn ? `${classes.googleSignIn}` : ''}${
-				inverted ? `${classes.inverted}` : ''
-			} ${classes.button}`}
+			className={` ${isGoogleSignIn ? `${classes.googleSignIn}` : ''} 
+			
+			${inverted ? `${classes.inverted}` : ''} 
+			
+			${classes.button}`}
 			{...otherProps}
 		>
 			{children}{' '}
@@ -39,8 +41,7 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	inverted: {
-		backgroundColor: 'white',
-		color: 'black',
+		color: 'blue',
 		border: '1px solid black',
 
 		'&:hover': {

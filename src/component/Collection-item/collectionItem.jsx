@@ -1,13 +1,16 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 import { addItem } from '../../redux/cart/cart.actions';
 
 import { makeStyles } from '@material-ui/styles';
 import Paper from '@material-ui/core/paper';
+import InfoIcon from '@material-ui/icons/Info';
 
 import CustomButton from '../../ui/CustomButton';
 
-const CollectionItems = ({ item, addItem }) => {
+const CollectionItems = ({ item, addItem, history }) => {
 	const { name, price, imageUrl } = item;
 	const classes = useStyles();
 
@@ -16,28 +19,31 @@ const CollectionItems = ({ item, addItem }) => {
 			<Paper className={classes.collectionItem}>
 				<div
 					className={classes.image}
-					style={{ backgroundImage: `url(../${imageUrl})` }}
-				/>
-
+					style={{ backgroundImage: `url(${imageUrl})` }}
+				/>{' '}
+				<InfoIcon onClick={() => history.push('/singleProduct')} />
 				<div className={classes.collectionFooter}>
-					<span className={classes.name}>{name} </span>
-					<span className={classes.price}>£{price} </span>
-				</div>
+					<span className={classes.name}> {name} </span>{' '}
+					<span className={classes.price}> £{price} </span>{' '}
+				</div>{' '}
 				<CustomButton
-					inverted
 					className={classes.customButton}
 					onClick={() => addItem(item)}
 				>
 					{' '}
-					Add to cart
-				</CustomButton>
-			</Paper>
+					Add to cart{' '}
+				</CustomButton>{' '}
+			</Paper>{' '}
 		</Fragment>
 	);
 };
 const mapDispatchToProps = (dispatch) => ({
 	addItem: (item) => dispatch(addItem(item)),
 });
+
+export default withRouter(connect(null, mapDispatchToProps)(CollectionItems));
+
+//styles
 
 const useStyles = makeStyles((theme) => ({
 	collectionItem: {
@@ -91,5 +97,3 @@ const useStyles = makeStyles((theme) => ({
 		width: '15%',
 	},
 }));
-
-export default connect(null, mapDispatchToProps)(CollectionItems);
