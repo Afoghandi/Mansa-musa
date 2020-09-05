@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import { addItem } from '../../redux/cart/cart.actions';
 
@@ -17,11 +17,15 @@ const CollectionItems = ({ item, addItem, history }) => {
 	return (
 		<Fragment>
 			<Paper className={classes.collectionItem}>
+				<Link to='/singleProduct'> single</Link>
 				<div
 					className={classes.image}
 					style={{ backgroundImage: `url(${imageUrl})` }}
 				/>{' '}
-				<InfoIcon onClick={() => history.push('/singleProduct')} />
+				<InfoIcon
+					onClick={() => history.push('/singleProduct')}
+					style={{ cursor: 'pointer' }}
+				/>
 				<div className={classes.collectionFooter}>
 					<span className={classes.name}> {name} </span>{' '}
 					<span className={classes.price}> £{price} </span>{' '}
