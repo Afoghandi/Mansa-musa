@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import mainBcg from '../../img/images/laptop/LP4.jpg';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -97,5 +96,5 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 Hero.defaultProps = {
-	img: mainBcg,
+	img: `https://i.ibb.co/bgXktj8/products-Bcg.jpg`,
 };
