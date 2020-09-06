@@ -1,50 +1,16 @@
 import React, { Fragment } from 'react';
+
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import { makeStyles } from '@material-ui/core/styles';
+
+import { selectDirectorySections } from '../../redux/directory/directory.selectors';
 
 import Title from '../../ui/Title';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
-import Hp2 from '../../img/images/headphones/HP2.jpg';
-import LP1 from '../../img/images/laptop/LP1.jpg';
-import speaker1 from '../../img/images/speakers/speaker11.jpg';
-import phone1 from '../../img/images/phones/phone1.jpg';
-import Tv from '../../img/images/tv/tv1.jpg';
-import More from '../../img/images/tv/tv5.jpg';
 
-const images = [
-	{
-		url: `${Hp2}`,
-		title: 'Headphones',
-		width: '40%',
-	},
-	{
-		url: `${LP1}`,
-		title: 'laptops',
-		width: '20%',
-	},
-	{
-		url: `${speaker1}`,
-		title: 'Speakers',
-		width: '40%',
-	},
-	{
-		url: `${phone1}`,
-		title: 'phones',
-		width: '25%',
-	},
-	{
-		url: `${Tv}`,
-		title: 'smart tv',
-		width: '35%',
-	},
-	{
-		url: `${More}`,
-		title: 'and more',
-		width: '40%',
-	},
-];
-
-export default function ButtonBases() {
+function Directory({ sections }) {
 	const classes = useStyles();
 
 	return (
@@ -52,7 +18,7 @@ export default function ButtonBases() {
 			<Title title=' Featured Products' />{' '}
 			<div className={classes.directoryWrapper}>
 				{' '}
-				{images.map((image) => (
+				{sections.map((image) => (
 					<ButtonBase
 						focusRipple
 						key={image.title}
@@ -86,6 +52,10 @@ export default function ButtonBases() {
 	);
 }
 
+const mapStateToProps = createStructuredSelector({
+	sections: selectDirectorySections,
+});
+export default connect(mapStateToProps)(Directory);
 //styles
 const useStyles = makeStyles((theme) => ({
 	directoryWrapper: {
