@@ -14,7 +14,6 @@ import {
 	shopPage,
 	signInSignOut,
 	checkoutPage,
-	singleProduct,
 } from './pages';
 
 import { setCurrentUser } from './redux/user/user.actions';
@@ -61,7 +60,6 @@ class App extends React.Component {
 						}
 					/>
 					<Route exact path='/checkout' component={checkoutPage} />{' '}
-					<Route exact path='/singleProduct' component={singleProduct} />{' '}
 					<Route exact path='/contact' component={contact} />{' '}
 				</Switch>{' '}
 			</Fragment>

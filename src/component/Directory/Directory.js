@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -10,7 +11,7 @@ import Title from '../../ui/Title';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 
-function Directory({ sections }) {
+function Directory({ sections, history, match }) {
 	const classes = useStyles();
 
 	return (
@@ -18,35 +19,40 @@ function Directory({ sections }) {
 			<Title title=' Featured Products' />{' '}
 			<div className={classes.directoryWrapper}>
 				{' '}
-				{sections.map((image) => (
-					<ButtonBase
-						focusRipple
-						key={image.title}
-						className={classes.image}
-						focusVisibleClassName={classes.focusVisible}
-						style={{
-							width: image.width,
-						}}
-					>
-						<span
-							className={classes.imageSrc}
+				{sections.map((item) => {
+					const { width, url, title, linkUrl } = item;
+
+					return (
+						<ButtonBase
+							focusRipple
+							key={title}
+							className={classes.image}
+							focusVisibleClassName={classes.focusVisible}
 							style={{
-								backgroundImage: `url(${image.url})`,
+								width: width,
 							}}
-						/>{' '}
-						<span className={classes.imageBackdrop} />{' '}
-						<span className={classes.imageButton}>
-							<Typography
-								component='span'
-								variant='subtitle1'
-								color='inherit'
-								className={classes.imageTitle}
-							>
-								{image.title} <span className={classes.imageMarked} />{' '}
-							</Typography>{' '}
-						</span>{' '}
-					</ButtonBase>
-				))}{' '}
+							onClick={() => history.push(`${match.url}${linkUrl}`)}
+						>
+							<span
+								className={classes.imageSrc}
+								style={{
+									backgroundImage: `url(${url})`,
+								}}
+							/>{' '}
+							<span className={classes.imageBackdrop} />{' '}
+							<span className={classes.imageButton}>
+								<Typography
+									component='span'
+									variant='subtitle1'
+									color='inherit'
+									className={classes.imageTitle}
+								>
+									{title} <span className={classes.imageMarked} />{' '}
+								</Typography>{' '}
+							</span>{' '}
+						</ButtonBase>
+					);
+				})}{' '}
 			</div>{' '}
 		</Fragment>
 	);
@@ -55,7 +61,7 @@ function Directory({ sections }) {
 const mapStateToProps = createStructuredSelector({
 	sections: selectDirectorySections,
 });
-export default connect(mapStateToProps)(Directory);
+export default withRouter(connect(mapStateToProps)(Directory));
 //styles
 const useStyles = makeStyles((theme) => ({
 	directoryWrapper: {

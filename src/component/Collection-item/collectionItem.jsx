@@ -17,7 +17,7 @@ const CollectionItems = ({ item, addItem, history }) => {
 	return (
 		<Fragment>
 			<Paper className={classes.collectionItem}>
-				<Link to='/singleProduct'> single</Link>
+				<Link to='/singleProduct'> single </Link>{' '}
 				<div
 					className={classes.image}
 					style={{ backgroundImage: `url(${imageUrl})` }}
@@ -25,7 +25,7 @@ const CollectionItems = ({ item, addItem, history }) => {
 				<InfoIcon
 					onClick={() => history.push('/singleProduct')}
 					style={{ cursor: 'pointer' }}
-				/>
+				/>{' '}
 				<div className={classes.collectionFooter}>
 					<span className={classes.name}> {name} </span>{' '}
 					<span className={classes.price}> £{price} </span>{' '}
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 		marginTop: '10px',
 		marginLeft: '20px',
 		marginRight: '20px',
-		width: '22%',
+		width: '22vw',
 		display: 'flex',
 		flexDirection: 'column',
 		height: '370px',

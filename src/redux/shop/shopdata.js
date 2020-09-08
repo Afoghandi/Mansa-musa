@@ -1,4 +1,5 @@
-const SHOP_DATA = [{
+const SHOP_DATA = {
+    headphones: {
         id: 1,
         title: 'Headphones',
         routeName: 'headphones',
@@ -58,7 +59,7 @@ const SHOP_DATA = [{
             },
         ],
     },
-    {
+    laptops: {
         id: 2,
         title: 'Laptops',
         routeName: 'laptops',
@@ -112,10 +113,10 @@ const SHOP_DATA = [{
             },
         ],
     },
-    {
+    phones: {
         id: 3,
         title: 'Phones',
-        routeName: 'Phones',
+        routeName: 'phones',
         items: [{
                 id: 18,
                 name: 'Iphne',
@@ -148,9 +149,9 @@ const SHOP_DATA = [{
             },
         ],
     },
-    {
+    speakers: {
         id: 4,
-        title: 'speakers',
+        title: 'Speakers',
         routeName: 'speakers',
         items: [{
                 id: 23,
@@ -196,7 +197,7 @@ const SHOP_DATA = [{
             },
         ],
     },
-    {
+    tv: {
         id: 5,
         title: 'Tv',
         routeName: 'tv',
@@ -238,6 +239,6 @@ const SHOP_DATA = [{
             },
         ],
     },
-];
+};
 
 export default SHOP_DATA;
