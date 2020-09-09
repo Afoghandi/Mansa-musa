@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/Mansa-musa/static/js/main.ac02b5f5.chunk.js",
+    "main.js.map": "/Mansa-musa/static/js/main.ac02b5f5.chunk.js.map",
+    "runtime-main.js": "/Mansa-musa/static/js/runtime-main.4c60ac5f.js",
+    "runtime-main.js.map": "/Mansa-musa/static/js/runtime-main.4c60ac5f.js.map",
+    "static/js/2.8908e79c.chunk.js": "/Mansa-musa/static/js/2.8908e79c.chunk.js",
+    "static/js/2.8908e79c.chunk.js.map": "/Mansa-musa/static/js/2.8908e79c.chunk.js.map",
+    "index.html": "/Mansa-musa/index.html",
+    "precache-manifest.182b6ce902d70d4b345978bf0097b596.js": "/Mansa-musa/precache-manifest.182b6ce902d70d4b345978bf0097b596.js",
+    "service-worker.js": "/Mansa-musa/service-worker.js",
+    "static/js/2.8908e79c.chunk.js.LICENSE.txt": "/Mansa-musa/static/js/2.8908e79c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4c60ac5f.js",
+    "static/js/2.8908e79c.chunk.js",
+    "static/js/main.ac02b5f5.chunk.js"
+  ]
+}
