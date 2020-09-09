@@ -18,7 +18,7 @@ export default function Hero({
 	return (
 		<Fragment>
 			<div className={classes.heroWrapper}>
-				<Grid container direction='column'>
+				<Grid direction='column'>
 					<Grid
 						item
 						className={`${miniBanner ? `${classes.miniBanner}` : ''} ${
@@ -44,7 +44,7 @@ export default function Hero({
 						<IconButton
 							aria-label='delete'
 							className={classes.margin}
-							size='large'
+							size='medium'
 						></IconButton>
 					</Grid>
 				</Grid>

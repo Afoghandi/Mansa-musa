@@ -68,7 +68,7 @@ export default function Services() {
 												{item.icon}{' '}
 											</Grid>{' '}
 											<Typography variant='h6'> {item.header} </Typography>{' '}
-											<Typography className={classes.text} variant='p'>
+											<Typography className={classes.text}>
 												{' '}
 												{item.text}{' '}
 											</Typography>{' '}
