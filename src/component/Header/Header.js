@@ -14,7 +14,7 @@ import { useTheme } from '@material-ui/core/styles';
 
 import CartIcon from '../Cart-icon/CartIcon';
 
-import logo from '../../img/icon/mm.jpg';
+//import logo from '../../assets/logo.jpg';
 import Sidebar from '../SidebarNav/SidebarNav';
 import NavLinks from '../NavLinks/NavLinks';
 import CartDropdown from '../Cart-dropdown/CartDropdown';
@@ -34,9 +34,7 @@ const Header = ({ hidden }) => {
 						to='/'
 						disableRipple
 						className={classes.logoContainer}
-					>
-						<img src={logo} className={classes.logo} alt=' comany logo' />
-					</Button>{' '}
+					></Button>{' '}
 					{matches ? <Sidebar /> : <NavLinks />} <CartIcon />{' '}
 					{hidden ? null : <CartDropdown />}{' '}
 				</Toolbar>{' '}
