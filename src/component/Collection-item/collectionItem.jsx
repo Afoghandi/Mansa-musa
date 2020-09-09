@@ -1,30 +1,24 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import { addItem } from '../../redux/cart/cart.actions';
 
 import { makeStyles } from '@material-ui/styles';
 import Paper from '@material-ui/core/paper';
-import InfoIcon from '@material-ui/icons/Info';
 
 import CustomButton from '../../ui/CustomButton';
 
-const CollectionItems = ({ item, addItem, history }) => {
+const CollectionItems = ({ item, addItem }) => {
 	const { name, price, imageUrl } = item;
 	const classes = useStyles();
 
 	return (
 		<Fragment>
 			<Paper className={classes.collectionItem}>
-				<Link to='/singleProduct'> single </Link>{' '}
 				<div
 					className={classes.image}
 					style={{ backgroundImage: `url(${imageUrl})` }}
-				/>{' '}
-				<InfoIcon
-					onClick={() => history.push('/singleProduct')}
-					style={{ cursor: 'pointer' }}
 				/>{' '}
 				<div className={classes.collectionFooter}>
 					<span className={classes.name}> {name} </span>{' '}
