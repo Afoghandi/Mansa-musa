@@ -15,7 +15,7 @@ import { useTheme } from '@material-ui/core/styles';
 import CartIcon from '../Cart-icon/CartIcon';
 
 import logo from '../../img/icon/mm.jpg';
-import Sidebar from '../SidebarNav/sidebarNav';
+import Sidebar from '../SidebarNav/SidebarNav';
 import NavLinks from '../NavLinks/NavLinks';
 import CartDropdown from '../Cart-dropdown/CartDropdown';
 import { selectCartHidden } from '../../redux/cart/cart.selectors';
@@ -37,8 +37,8 @@ const Header = ({ hidden }) => {
 					>
 						<img src={logo} className={classes.logo} alt=' comany logo' />
 					</Button>{' '}
-					{matches ? <Sidebar /> : <NavLinks />} <CartIcon />
-					{hidden ? null : <CartDropdown />}
+					{matches ? <Sidebar /> : <NavLinks />} <CartIcon />{' '}
+					{hidden ? null : <CartDropdown />}{' '}
 				</Toolbar>{' '}
 			</AppBar>{' '}
 			<div className={classes.toolbarMargin} />{' '}
