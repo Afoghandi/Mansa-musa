@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { addItem } from '../../redux/cart/cart.actions';
 
 import { makeStyles } from '@material-ui/styles';
-import Paper from '@material-ui/core/paper';
+//import Paper from '@material-ui/core/paper';
 
 import CustomButton from '../../ui/CustomButton';
 
@@ -15,7 +15,7 @@ const CollectionItems = ({ item, addItem }) => {
 
 	return (
 		<Fragment>
-			<Paper className={classes.collectionItem}>
+			<div className={classes.collectionItem}>
 				<div
 					className={classes.image}
 					style={{ backgroundImage: `url(${imageUrl})` }}
@@ -31,7 +31,7 @@ const CollectionItems = ({ item, addItem }) => {
 					{' '}
 					Add to cart{' '}
 				</CustomButton>{' '}
-			</Paper>{' '}
+			</div>{' '}
 		</Fragment>
 	);
 };
