@@ -14,7 +14,7 @@ import { useTheme } from '@material-ui/core/styles';
 
 import CartIcon from '../Cart-icon/CartIcon';
 
-import logo from '../../img/icon/mm.jpg';
+import logo from '../../assets/logo.svg';
 import Sidebar from '../SidebarNav/SidebarNav';
 import NavLinks from '../NavLinks/NavLinks';
 import CartDropdown from '../Cart-dropdown/CartDropdown';
