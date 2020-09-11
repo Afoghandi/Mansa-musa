@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
 
-import { makeStyles } from '@material-ui/styles';
+import { useStyles } from './CartDropdown.styles';
 import Paper from '@material-ui/core/Paper';
 
 import { selectCartItems } from '../../redux/cart/cart.selectors';
@@ -42,33 +42,3 @@ const mapStateToProps = createStructuredSelector({
 	cartItems: selectCartItems,
 });
 export default withRouter(connect(mapStateToProps)(CartDropdown));
-
-//Styles
-
-const useStyles = makeStyles(() => ({
-	cartDropdown: {
-		position: 'absolute',
-		width: '240px',
-		height: '340px',
-		display: 'flex',
-		flexDirection: ' column',
-		padding: '20px',
-		overflow: 'scroll',
-		backgroundColor: 'white',
-		top: '80px',
-		right: '0',
-		zIndex: '5',
-	},
-	cartItems: {
-		height: ' 240px',
-		display: 'flex',
-		flexDirection: 'column',
-	},
-	button: {
-		marginTop: 'auto',
-	},
-	emptyMessage: {
-		fontSize: '18px',
-		margin: '50px auto',
-	},
-}));

@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react';
 
-import { makeStyles } from '@material-ui/styles';
-
 import CollectionItem from '../Collection-item/collectionItem';
 import Title from '../../ui/Title';
+import { useStyles } from './CollectionPreview.styles';
 
 const CollectionPreview = ({ title, items }) => {
 	const classes = useStyles();
@@ -20,24 +19,10 @@ const CollectionPreview = ({ title, items }) => {
 							<CollectionItem key={item.id} item={item} />
 						))}{' '}
 				</div>{' '}
+				=
 			</div>{' '}
 		</Fragment>
 	);
 };
 
 export default CollectionPreview;
-
-//styles
-
-const useStyles = makeStyles(() => ({
-	collectionPreview: {
-		display: 'flex',
-		flexDirection: 'column',
-		marginBottom: '30px',
-	},
-
-	preview: {
-		display: 'flex',
-		justifyContent: 'space-between',
-	},
-}));

@@ -8,7 +8,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
-import { makeStyles } from '@material-ui/styles';
 import { Button } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 
@@ -19,6 +18,7 @@ import Sidebar from '../SidebarNav/SidebarNav';
 import NavLinks from '../NavLinks/NavLinks';
 import CartDropdown from '../Cart-dropdown/CartDropdown';
 import { selectCartHidden } from '../../redux/cart/cart.selectors';
+import { useStyles } from './Header.styles';
 
 const Header = ({ hidden }) => {
 	const classes = useStyles();
@@ -51,16 +51,3 @@ const mapStateToProps = createStructuredSelector({
 export default connect(mapStateToProps)(Header);
 
 //In line styling
-const useStyles = makeStyles((theme) => ({
-	toolbarMargin: {
-		...theme.mixins.toolbar,
-		marginBottom: '-10px',
-	},
-	logo: {
-		height: '3rem',
-	},
-	logoContainer: {
-		padding: '0',
-		cursor: 'pointer',
-	},
-}));

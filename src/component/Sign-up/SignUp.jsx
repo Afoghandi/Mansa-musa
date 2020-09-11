@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Grid, makeStyles } from '@material-ui/core';
+
+import { Grid } from '@material-ui/core';
 import FormInput from '../Form-input/FormInput';
-import CustomButton from '../../ui/CustomButton';
+import { useStyles } from './SignUp.styles';
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
+import CustomButton from '../../ui/CustomButton';
 
 export default function SignUp() {
 	const classes = useStyles();
@@ -98,20 +100,3 @@ export default function SignUp() {
 		</Grid>
 	);
 }
-
-const useStyles = makeStyles((theme) => ({
-	signUpWrapper: {
-		width: '800px',
-		display: 'flex',
-		[theme.breakpoints.down('md')]: {
-			width: '800px',
-			marginLeft: '-20em',
-		},
-		[theme.breakpoints.down('sm')]: {
-			width: '800px',
-			marginLeft: '-25em',
-		},
-	},
-
-	signUp: {},
-}));

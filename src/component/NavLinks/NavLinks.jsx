@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { makeStyles } from '@material-ui/styles';
+import { useStyles } from './Navlink.styles';
 
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -73,25 +73,3 @@ const mapStateToProps = createStructuredSelector({
 export default connect(mapStateToProps)(NavLinks);
 
 //styles
-
-const useStyles = makeStyles((theme) => ({
-	tabContainer: {
-		marginLeft: 'auto',
-	},
-	tab: {
-		...theme.typography.tab,
-		minWidth: 10,
-		marginLeft: '25px',
-	},
-	Link: {
-		...theme.typography.tab,
-		minWidth: 10,
-		cursor: 'pointer',
-		color: 'white',
-		fontSize: '1rem',
-		marginTop: '12px',
-		paddingLeft: '15px',
-		paddingRight: '20px',
-		textDecoration: 'none',
-	},
-}));

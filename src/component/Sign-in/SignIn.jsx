@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
 import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
-import { Grid, makeStyles } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 import FormInput from '../Form-input/FormInput';
 import CustomButton from '../../ui/CustomButton';
+
+import { useStyles } from './SignIn.styles';
 
 export default function SignIn() {
 	const classes = useStyles();
@@ -29,8 +31,8 @@ export default function SignIn() {
 		<Grid container justify='center' className={classes.signInWrapper}>
 			<Grid item sm={8} align='center' className={classes.signIn}>
 				{' '}
-				<h2>I already have an account </h2>{' '}
-				<span>Sign in with your email and password</span>{' '}
+				<h2> I already have an account </h2>{' '}
+				<span> Sign in with your email and password </span>{' '}
 				<form onSubmit={handleSubmit}>
 					<FormInput
 						name='email'
@@ -40,7 +42,7 @@ export default function SignIn() {
 						label='required'
 						value={email}
 						onChange={handleChange}
-					/>
+					/>{' '}
 					<FormInput
 						id='filled-password-input'
 						label='Password'
@@ -53,40 +55,16 @@ export default function SignIn() {
 					/>{' '}
 					<Grid container direction='row' justify='space-evenly'>
 						<Grid item className={classes.buttons}>
-							<CustomButton type='submit'>sign in</CustomButton>{' '}
-						</Grid>
+							<CustomButton type='submit'> sign in </CustomButton>{' '}
+						</Grid>{' '}
 						<Grid item className={classes.buttons}>
 							<CustomButton isGoogleSignIn onClick={signInWithGoogle}>
-								sign in with google
+								sign in with google{' '}
 							</CustomButton>{' '}
-						</Grid>
-					</Grid>
-				</form>
-			</Grid>
+						</Grid>{' '}
+					</Grid>{' '}
+				</form>{' '}
+			</Grid>{' '}
 		</Grid>
 	);
 }
-
-const useStyles = makeStyles((theme) => ({
-	signInWrapper: {
-		width: '800px',
-		display: 'flex',
-		[theme.breakpoints.down('md')]: {
-			width: '600px',
-			marginTop: '40em',
-			position: 'relative',
-			marginRight: '10px',
-		},
-
-		[theme.breakpoints.down('sm')]: {
-			width: '600px',
-			marginTop: '40em',
-			position: 'relative',
-			marginLeft: '-9em',
-		},
-	},
-
-	buttons: {
-		marginLeft: '2px',
-	},
-}));

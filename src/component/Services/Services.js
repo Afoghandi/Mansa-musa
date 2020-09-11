@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import Title from '../../ui/Title';
 
-import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
 import Grid from '@material-ui/core/Grid';
@@ -9,6 +8,7 @@ import EuroSharpIcon from '@material-ui/icons/EuroSharp';
 import Replay30Icon from '@material-ui/icons/Replay30';
 import LocalShippingSharpIcon from '@material-ui/icons/LocalShippingSharp';
 import Paper from '@material-ui/core/Paper';
+import { useStyles } from './Services.styles';
 
 const ServiceData = [
 	{
@@ -85,36 +85,3 @@ export default function Services() {
 		</Fragment>
 	);
 }
-const useStyles = makeStyles((theme) => ({
-	serviceWrapper: {
-		flexGrow: 1,
-		minWidth: '100%',
-		paddingBottom: '7rem',
-		paddingTop: '4rem',
-		backgroundColor: theme.palette.lightBlue.lightBlue,
-		display: 'flex',
-	},
-	paper: {
-		height: 350,
-		width: 370,
-		color: 'white',
-		//
-		marginBottom: '1rem',
-		paddingBottom: '3rem',
-	},
-	icon: {
-		color: theme.palette.secondary.main,
-
-		boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
-		textAlign: 'center',
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-		fontWeight: 'bold',
-		marginBottom: '1rem',
-	},
-	text: {
-		...theme.typography.p,
-		color: theme.palette.black.black,
-	},
-}));

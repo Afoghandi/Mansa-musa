@@ -1,8 +1,7 @@
 import React from 'react';
 import { createStructuredSelector } from 'reselect';
 
-import { makeStyles } from '@material-ui/styles';
-
+import { useStyles } from './CartIcon.styles';
 import { connect } from 'react-redux';
 
 import IconButton from '@material-ui/core/IconButton';
@@ -34,21 +33,3 @@ const mapStateToProps = createStructuredSelector({
 	itemCount: selectCartItemsCount,
 });
 export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
-
-//Styles
-const useStyles = makeStyles((theme) => ({
-	shoppingIcon: {
-		right: 3,
-		top: 13,
-		fontSize: '40px',
-		padding: '0 4px',
-		color: 'white',
-	},
-	itemCount: {
-		position: 'absolute',
-		fontSize: '20px',
-		fontWeight: 'bold',
-		right: '30px',
-		color: theme.palette.secondary.main,
-	},
-}));
