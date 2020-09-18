@@ -7,6 +7,7 @@ export const useStyles = makeStyles((theme) => ({
         marginBottom: '1rem',
         minWidth: '100%',
         marginLeft: '10px',
+        justifyContent: 'center',
     },
     banner: {
         textAlign: 'center',
