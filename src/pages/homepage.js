@@ -5,14 +5,17 @@ import Services from '../component/Services/Services';
 import Directory from '../component/Directory/Directory';
 
 export default function HomePage() {
-	return (
-		<Fragment>
-			<Hero title='Bring More to life' subtitle='with technology'>
-				{' '}
-				<CustomButton> Browse </CustomButton>{' '}
-			</Hero>{' '}
-			<Services />
-			<Directory />
-		</Fragment>
-	);
+    return ( <
+        Fragment >
+        <
+        Hero title = 'Bring More to life'
+        subtitle = 'with technology' > { ' ' } <
+        CustomButton > Browse < /CustomButton>{' '} <
+        /Hero>{' '} <
+        Services / >
+        <
+        Directory / >
+        <
+        /Fragment>
+    );
 }

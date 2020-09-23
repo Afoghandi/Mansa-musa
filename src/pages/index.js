@@ -5,7 +5,7 @@ export { default as shopPage }
 from './shop';
 
 export { default as collection }
-from './collection';
+from './collection/collection';
 
 export { default as signInSignOut }
 from './signInSignOut';

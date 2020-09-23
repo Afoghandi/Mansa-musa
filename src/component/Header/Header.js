@@ -49,5 +49,3 @@ const mapStateToProps = createStructuredSelector({
 	hidden: selectCartHidden,
 });
 export default connect(mapStateToProps)(Header);
-
-//In line styling

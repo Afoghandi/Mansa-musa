@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 export const useStyles = makeStyles((theme) => ({
-    formGroupWrapp: {
+    formGroupWrap: {
         position: 'relative',
         margin: '45px 0',
     },

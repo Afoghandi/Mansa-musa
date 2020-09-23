@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { useStyles } from './Navlink.styles';
+import { useStyles } from './NavLink.styles';
 
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -71,5 +71,3 @@ const mapStateToProps = createStructuredSelector({
 	currentUser: selectCurrentUser,
 });
 export default connect(mapStateToProps)(NavLinks);
-
-//styles

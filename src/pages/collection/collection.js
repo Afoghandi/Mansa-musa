@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/styles';
 
-import { selectCollection } from '../redux/shop/shop.selectors';
+import { selectCollection } from '../../redux/shop/shop.selectors';
 
-import CollectionItem from '../component/Collection-item/collectionItem';
+import CollectionItem from '../../component/Collection-item/collectionItem';
 
-import Hero from '../component/Hero/Hero';
+import Hero from '../../component/Hero/Hero';
 
 const CollectionPage = ({ collection }) => {
 	const classes = useStyles();
@@ -15,12 +15,12 @@ const CollectionPage = ({ collection }) => {
 	return (
 		<div className={classes.collectionPage}>
 			<Hero miniBanner title={title} />
-
 			<div className={classes.items}>
+				{' '}
 				{items.map((item) => (
 					<CollectionItem key={item.id} item={item} />
 				))}{' '}
-			</div>
+			</div>{' '}
 		</div>
 	);
 };
